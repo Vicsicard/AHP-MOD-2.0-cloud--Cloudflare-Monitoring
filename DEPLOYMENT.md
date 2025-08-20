@@ -31,8 +31,10 @@ git push -u origin main
    - **Project name**: `ahp-mod-cloudflare-monitor`
    - **Production branch**: `main`
    - **Build command**: `npm install && npm run build`
-   - **Build output directory**: `public`
+   - **Build output directory**: `dist`
    - **Root directory**: `/` (leave as default)
+
+> **Note**: The build output directory is set to `dist` to match the `pages_build_output_dir` in wrangler.toml
 
 ## Step 3: Configure Environment Variables
 
@@ -52,16 +54,34 @@ In the Cloudflare Pages project settings, add the following environment variable
 3. Name it `monitor-data`
 4. Copy the namespace ID
 
-## Step 5: Update wrangler.toml with KV Namespace ID
+## Step 5: Update wrangler.toml Configuration
 
-Edit the `wrangler.toml` file and replace the placeholder ID with your actual KV namespace ID:
+Edit the `wrangler.toml` file to include both Pages and Workers configurations:
 
 ```toml
+name = "ahp-mod-cloudflare-monitor"
+main = "./functions/api/index.js"
+compatibility_date = "2023-10-30"
+
+# Route all requests to the public directory by default
+[site]
+bucket = "./public"
+
+# Cloudflare Pages configuration
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "directory"
+pages_build_output_dir = "dist"
+
+# Define KV namespace for storing monitoring data
 [[kv_namespaces]]
 binding = "MONITOR_DATA"
 id = "YOUR_ACTUAL_NAMESPACE_ID_HERE"
 preview_id = "YOUR_ACTUAL_NAMESPACE_ID_HERE"
 ```
+
+> **Note**: The `pages_build_output_dir` property is required for Cloudflare Pages to recognize your wrangler.toml configuration.
 
 ## Step 6: Deploy Functions
 

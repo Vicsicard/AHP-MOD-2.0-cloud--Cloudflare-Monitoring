@@ -6,6 +6,13 @@ compatibility_date = "2023-10-30"
 [site]
 bucket = "./public"
 
+# Cloudflare Pages configuration
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "directory"
+pages_build_output_dir = "dist"
+
 # Define KV namespace for storing monitoring data
 [[kv_namespaces]]
 binding = "MONITOR_DATA"

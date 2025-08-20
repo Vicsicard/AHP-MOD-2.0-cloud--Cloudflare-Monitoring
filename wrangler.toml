@@ -1,17 +1,15 @@
+# Cloudflare Pages configuration
 name = "ahp-mod-cloudflare-monitor"
-main = "./functions/api/index.js"
 compatibility_date = "2023-10-30"
 
-# Route all requests to the public directory by default
-[site]
-bucket = "./public"
-
-# Cloudflare Pages configuration
+# Build configuration
 [build]
 command = "npm install && npm run build"
 
 # This is the key property for Cloudflare Pages
-pages_build_output_dir = "dist"
+[build.upload]
+format = "directory"
+dir = "dist"
 
 # Define KV namespace for storing monitoring data
 [[kv_namespaces]]
@@ -30,15 +28,19 @@ ALERT_THRESHOLD = "3"
 [triggers]
 crons = ["*/1 * * * *"] # Run every minute
 
-# Define routes for API endpoints
+# Functions configuration
+[functions]
+directory = "functions"
+
+# Routes for API endpoints
 [[routes]]
 pattern = "/api/ping"
-script = "./functions/api/ping.js"
+function = "api/ping"
 
 [[routes]]
 pattern = "/api/status"
-script = "./functions/api/status.js"
+function = "api/status"
 
 [[routes]]
 pattern = "/api/metrics"
-script = "./functions/api/metrics.js"
+function = "api/metrics"

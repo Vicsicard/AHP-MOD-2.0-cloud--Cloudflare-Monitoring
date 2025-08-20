@@ -9,8 +9,8 @@ bucket = "./public"
 # Cloudflare Pages configuration
 [build]
 command = "npm install && npm run build"
-[build.upload]
-format = "directory"
+
+# This is the key property for Cloudflare Pages
 pages_build_output_dir = "dist"
 
 # Define KV namespace for storing monitoring data

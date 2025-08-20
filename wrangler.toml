@@ -2,14 +2,8 @@
 name = "ahp-mod-cloudflare-monitor"
 compatibility_date = "2023-10-30"
 
-# Build configuration
-[build]
-command = "npm install && npm run build"
-
 # This is the key property for Cloudflare Pages
-[build.upload]
-format = "directory"
-dir = "dist"
+pages_build_output_dir = "dist"
 
 # Define KV namespace for storing monitoring data
 [[kv_namespaces]]
@@ -23,24 +17,3 @@ MAIN_APP_URL = "https://ahp-mod-2-0-cloud.onrender.com"
 RENDER_MONITOR_URL = "https://ahp-mod-2-0-cloud-1.onrender.com"
 PING_INTERVAL = "15000"
 ALERT_THRESHOLD = "3"
-
-# Define cron triggers for background monitoring
-[triggers]
-crons = ["*/1 * * * *"] # Run every minute
-
-# Functions configuration
-[functions]
-directory = "functions"
-
-# Routes for API endpoints
-[[routes]]
-pattern = "/api/ping"
-function = "api/ping"
-
-[[routes]]
-pattern = "/api/status"
-function = "api/status"
-
-[[routes]]
-pattern = "/api/metrics"
-function = "api/metrics"

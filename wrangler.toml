@@ -5,12 +5,6 @@ compatibility_date = "2023-10-30"
 # This is the key property for Cloudflare Pages
 pages_build_output_dir = "dist"
 
-# Define KV namespace for storing monitoring data
-[[kv_namespaces]]
-binding = "MONITOR_DATA"
-id = "monitor-data"
-preview_id = "monitor-data-preview"
-
 # Define environment variables
 [vars]
 MAIN_APP_URL = "https://ahp-mod-2-0-cloud.onrender.com"

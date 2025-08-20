@@ -1,0 +1,30 @@
+{
+  "name": "ahp-mod-cloudflare-monitor",
+  "version": "1.0.0",
+  "description": "Cloudflare Pages monitoring solution for AHP-MOD 2.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev ./public --binding MONITOR_DATA=monitor-data-preview",
+    "publish": "wrangler pages publish ./public",
+    "deploy": "wrangler deploy",
+    "format": "prettier --write '**/*.{js,css,html,json}'"
+  },
+  "keywords": [
+    "monitoring",
+    "cloudflare",
+    "pages",
+    "workers",
+    "ahp-mod"
+  ],
+  "author": "Vicsicard",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.4.0",
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "wrangler": "^3.10.0"
+  }
+}

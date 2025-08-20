@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHP-MOD 2.0 Monitoring Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-heartbeat"></i> AHP-MOD 2.0 Monitoring</h1>
+    <div class="status-summary">
+      <span id="overall-status" class="status-badge">Loading...</span>
+      <span id="last-updated">Last updated: --</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="endpoints-section">
+      <h2>Endpoint Status</h2>
+      <div id="endpoints-container" class="endpoints-container">
+        <div class="loading">Loading endpoint data...</div>
+      </div>
+    </section>
+
+    <section class="metrics-section">
+      <h2>System Metrics</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3>Uptime</h3>
+          <div id="uptime-value" class="metric-value">--</div>
+        </div>
+        <div class="metric-card">
+          <h3>Response Time (avg)</h3>
+          <div id="response-time-value" class="metric-value">--</div>
+        </div>
+        <div class="metric-card">
+          <h3>Success Rate</h3>
+          <div id="success-rate-value" class="metric-value">--</div>
+        </div>
+        <div class="metric-card">
+          <h3>Monitoring Status</h3>
+          <div id="monitoring-status-value" class="metric-value">--</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <h2>Recent Activity</h2>
+      <div id="history-container" class="history-container">
+        <div class="loading">Loading history data...</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>AHP-MOD 2.0 Cloudflare Monitoring Service | <span id="version">v1.0.0</span></p>
+    <p>Redundant monitoring with Render service at <a href="https://ahp-mod-2-0-cloud-1.onrender.com" target="_blank">ahp-mod-2-0-cloud-1.onrender.com</a></p>
+  </footer>
+
+  <script src="js/monitor.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

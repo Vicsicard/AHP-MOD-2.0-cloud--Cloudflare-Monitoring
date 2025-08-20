@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler pages dev ./public --binding MONITOR_DATA=monitor-data-preview",
+    "build": "echo 'No build step required' && cp -r public/ dist/",
     "publish": "wrangler pages publish ./public",
     "deploy": "wrangler deploy",
     "format": "prettier --write '**/*.{js,css,html,json}'"
